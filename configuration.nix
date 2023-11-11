@@ -91,6 +91,10 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Disable password for sudo
+  security.sudo.wheelNeedsPassword = false;
+
+  # Use ZSH as default shell
   users.defaultUserShell = pkgs.zsh;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
