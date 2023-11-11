@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
+      ./desktop-environments/gnome.nix
     ];
 
   # Add support for flakes
@@ -63,30 +64,6 @@
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Gnome
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages = (with pkgs; [
-		  gnome-photos
-		  gnome-tour
-  ]) ++ (with pkgs.gnome; [
-	  cheese # webcam tool
-	  evince # document viewer
-	  gnome-characters
-
-  ]);
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
-
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "fr";
-    xkbVariant = "";
-  };
 
   # Configure console keymap
   console.keyMap = "fr";
