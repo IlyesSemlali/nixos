@@ -9,8 +9,10 @@
     [ # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
       ./nixos.nix
+      ./users.nix
       ./desktop-environments/gnome.nix
     ];
+
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -22,23 +24,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
 
   # Intel Graphics
   boot.kernelParams = [ "i915.force_probe=1926" ];
@@ -55,15 +40,15 @@
     ];
   };
 
+
   # Bluetooth
   hardware.bluetooth.enable = true; # enables support for Bluetooth
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
-  # Configure console keymap
-  console.keyMap = "fr";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -85,35 +70,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Disable password for sudo
-  security.sudo.wheelNeedsPassword = false;
-
-  # Use ZSH as default shell
-  users.defaultUserShell = pkgs.zsh;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ilyes = {
-    isNormalUser = true;
-    description = "Ilyès Semlali";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      solaar
-      vivaldi
-    ];
-  };
-
-  users.users.system = {
-    isNormalUser = true;
-    description = "System";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      audacity
-      google-chrome
-    ];
-  };
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
