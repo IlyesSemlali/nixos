@@ -84,6 +84,7 @@
     neovim
     nodejs
     pciutils
+    tmux
     unzip
     vim
     vlc
