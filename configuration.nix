@@ -7,6 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
+      <home-manager/nixos>
       /etc/nixos/hardware-configuration.nix
       ./nixos.nix
       ./users.nix

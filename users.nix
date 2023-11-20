@@ -27,4 +27,24 @@
       google-chrome
     ];
   };
+
+  users.users.hm-test = {
+    isNormalUser = true;
+    description = "HM Test";
+    extraGroups = [ "networkmanager" "wheel" ];
+  };
+
+  home-manager.users.hm-test = { pkgs, ... }: {
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+        allowUnfreePredicate = (_: true);
+      };
+    };
+
+    home = {
+      packages = [ pkgs.audacity pkgs.google-chrome ];
+      stateVersion = "23.05";
+    };
+  };
 }
