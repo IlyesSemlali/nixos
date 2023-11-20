@@ -28,23 +28,23 @@
     ];
   };
 
-  users.users.hm-test = {
+  users.users.flake-test = {
     isNormalUser = true;
     description = "HM Test";
     extraGroups = [ "networkmanager" "wheel" ];
   };
 
-  home-manager.users.hm-test = { pkgs, ... }: {
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-        allowUnfreePredicate = (_: true);
-      };
-    };
-
-    home = {
-      packages = [ pkgs.audacity pkgs.google-chrome ];
-      stateVersion = "23.05";
-    };
-  };
+  # home-manager.users.flake-test = { pkgs, ... }: {
+  #   nixpkgs = {
+  #     config = {
+  #       allowUnfree = true;
+  #       allowUnfreePredicate = (_: true);
+  #     };
+  #   };
+  #
+  #   home = {
+  #     packages = [ pkgs.audacity pkgs.google-chrome ];
+  #     stateVersion = "23.05";
+  #   };
+  # };
 }
