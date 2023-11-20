@@ -76,6 +76,7 @@
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator # Gnome
     alacritty
+    bat
     delta
     fzf
     gcc
