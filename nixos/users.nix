@@ -28,23 +28,9 @@
     ];
   };
 
-  users.users.flake-test = {
+  users.users.ilyes-hypr = {
     isNormalUser = true;
-    description = "HM Test";
+    description = "Ilyes Semlali (hyprland)";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
-  # home-manager.users.flake-test = { pkgs, ... }: {
-  #   nixpkgs = {
-  #     config = {
-  #       allowUnfree = true;
-  #       allowUnfreePredicate = (_: true);
-  #     };
-  #   };
-  #
-  #   home = {
-  #     packages = [ pkgs.audacity pkgs.google-chrome ];
-  #     stateVersion = "23.05";
-  #   };
-  # };
 }

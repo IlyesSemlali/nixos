@@ -1,9 +1,16 @@
 { config, pkgs, ... }:
 
-{
-  home.username = "flake-test";
-  home.homeDirectory = "/home/flake-test";
-  home.stateVersion = "23.05";
+let
+  username = "ilyes-hypr";
+
+in {
   programs.home-manager.enable = true;
+
+  home = {
+    stateVersion = "23.05";
+
+    inherit username;
+    homeDirectory = "/home/${username}";
+  };
 }
 

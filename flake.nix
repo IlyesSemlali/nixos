@@ -10,26 +10,33 @@
   };
 
   outputs = { nixpkgs, home-manager,  ... }:
-  let
-    system = "x86_64-linux";
-  in
-  {
-    nixosConfigurations = {
-      xps13 = nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./nixos/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager = {
-              useUserPackages = true;
-              useGlobalPkgs = true;
-              users.flake-test = ./home-manager/home.nix;
-            };
-          }
-        ];
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in {
+      nixosConfigurations = {
+        xps13 = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./nixos/configuration.nix
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                users.ilyes-hypr = ./home-manager/home.nix;
+              };
+            }
+          ];
+        };
+      };
+      homeConfigurations = {
+        ilyes-hypr = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home-manager/home.nix
+          ];
+        };
       };
     };
-  };
 }
 
