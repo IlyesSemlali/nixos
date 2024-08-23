@@ -39,7 +39,7 @@
       powerOnBoot = true;
     };
 
-    opengl = {
+    graphics = {
       # Hardware acceleration
       enable = true;
       extraPackages = with pkgs; [
@@ -55,13 +55,7 @@
   services.printing.enable = true;
 
 
-  # Enable sound with pipewire.
-  sound.enable = true;
   hardware.pulseaudio.enable = false;
-  security = {
-    rtkit.enable = true;
-    sudo.wheelNeedsPassword = false;
-  };
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -73,6 +67,11 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+  };
+
+  security = {
+    rtkit.enable = true;
+    sudo.wheelNeedsPassword = false;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

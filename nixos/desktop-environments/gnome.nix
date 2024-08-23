@@ -10,18 +10,16 @@
   environment.gnome.excludePackages = (with pkgs; [
       gnome-photos
       gnome-tour
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
-    evince # document viewer
-    gnome-characters
-
+      cheese # webcam tool
+      evince # document viewer
+      gnome.gnome-characters
   ]);
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
 
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "fr";
-    xkbVariant = "";
+    variant = "";
   };
 }

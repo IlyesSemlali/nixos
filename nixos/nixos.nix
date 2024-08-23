@@ -11,7 +11,7 @@
 
   system.autoUpgrade = {
    enable = true;
-   channel = "https://nixos.org/channels/nixos-23.05";
+   channel = "https://nixos.org/channels/nixos-24.05";
   };
 
   # Allow unfree packages
