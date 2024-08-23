@@ -1,9 +1,6 @@
 { config, pkgs, ... }:
 
 {
-  # Disable password for sudo
-  security.sudo.wheelNeedsPassword = false;
-
   # Use ZSH as default shell
   users.defaultUserShell = pkgs.zsh;
 
