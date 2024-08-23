@@ -89,9 +89,11 @@
     fzf
     gcc
     git
+    jdk
     neovim
     nodejs
     pciutils
+    ripgrep
     starship
     tmux
     unzip
