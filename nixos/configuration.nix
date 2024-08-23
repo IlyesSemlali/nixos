@@ -86,16 +86,19 @@
     alacritty
     bat
     delta
+    eza
     fzf
     gcc
     git
     neovim
     nodejs
     pciutils
+    starship
     tmux
     unzip
     vim
     vlc
+    zoxide
     zsh
   ] ;
 
