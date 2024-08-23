@@ -6,6 +6,7 @@
 
     displayManager.gdm = {
       enable = true;
+      autoSuspend = false;
     };
 
     desktopManager.gnome.enable = true;
