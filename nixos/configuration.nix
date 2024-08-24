@@ -96,6 +96,7 @@
     ripgrep
     starship
     tmux
+    tree
     unzip
     vim
     vlc
