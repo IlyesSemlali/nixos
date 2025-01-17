@@ -93,6 +93,7 @@
     neovim
     nodejs
     pciutils
+    pre-commit
     ripgrep
     starship
     tmux
