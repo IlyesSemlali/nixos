@@ -23,17 +23,9 @@
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.ilyes-hypr = ./home-manager/home.nix;
+                users.ilyes = ./home-manager/home.nix;
               };
             }
-          ];
-        };
-      };
-      homeConfigurations = {
-        ilyes-hypr = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [
-            ./home-manager/home.nix
           ];
         };
       };

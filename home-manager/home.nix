@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  username = "ilyes-hypr";
+  username = "ilyes";
 
 in {
   programs.home-manager.enable = true;

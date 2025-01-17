@@ -24,12 +24,6 @@
           google-chrome
         ];
       };
-
-      ilyes-hypr = {
-        isNormalUser = true;
-        description = "Ilyes Semlali (hyprland)";
-        extraGroups = [ "networkmanager" "wheel" ];
-      };
     };
   };
 }
