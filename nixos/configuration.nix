@@ -94,6 +94,7 @@
     nodejs
     pciutils
     pre-commit
+    python3Full
     ripgrep
     starship
     tmux
