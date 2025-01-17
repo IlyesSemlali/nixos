@@ -89,6 +89,7 @@
     gnomeExtensions.appindicator # Gnome
     alacritty
     bat
+    cargo
     delta
     eza
     fzf
