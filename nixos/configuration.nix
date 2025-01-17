@@ -78,6 +78,10 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+      source-code-pro
+  ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
