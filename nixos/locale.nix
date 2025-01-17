@@ -4,6 +4,13 @@
   console.keyMap = "fr";
   time.timeZone = "Europe/Paris";
 
+  services.xserver = {
+    xkb = {
+      layout = "fr";
+      variant = "";
+    };
+  };
+
   i18n = {
     defaultLocale = "en_US.UTF-8";
     supportedLocales = [

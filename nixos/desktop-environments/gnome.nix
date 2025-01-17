@@ -10,10 +10,6 @@
     };
 
     desktopManager.gnome.enable = true;
-    xkb = {
-      layout = "fr";
-      variant = "";
-    };
   };
 
   environment.gnome.excludePackages = (with pkgs; [
