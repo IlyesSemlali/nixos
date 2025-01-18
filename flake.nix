@@ -15,10 +15,11 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
       nixosConfigurations = {
-        xps13 = nixpkgs.lib.nixosSystem {
+        gnome = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
             ./nixos/configuration.nix
+            ./desktops/gnome.nix
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useUserPackages = true;

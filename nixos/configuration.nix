@@ -11,7 +11,6 @@
       ./locale.nix
       ./nixos.nix
       ./users.nix
-      ./desktop-environments/gnome.nix
     ];
 
 
@@ -82,35 +81,6 @@
     (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
       source-code-pro
   ];
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    gnomeExtensions.appindicator # Gnome
-    alacritty
-    bat
-    cargo
-    delta
-    eza
-    fzf
-    gcc
-    git
-    jdk
-    neovim
-    nodejs
-    pciutils
-    pre-commit
-    python3Full
-    ripgrep
-    starship
-    tmux
-    tree
-    unzip
-    vim
-    vlc
-    zoxide
-    zsh
-  ] ;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
