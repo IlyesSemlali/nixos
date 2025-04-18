@@ -78,8 +78,7 @@
   # services.xserver.libinput.enable = true;
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
-      source-code-pro
+      nerd-fonts.sauce-code-pro
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
