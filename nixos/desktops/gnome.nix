@@ -15,12 +15,6 @@
 
   environment.systemPackages = with pkgs; [
     gnomeExtensions.appindicator # Gnome
-    gcc
-    git
-    pciutils
-    tree
-    unzip
-    zsh
   ] ;
 
   environment.gnome.excludePackages = (with pkgs; [

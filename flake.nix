@@ -23,7 +23,10 @@
 
           modules = [
             ./nixos/configuration.nix
-            ./desktops/gnome.nix
+            ./nixos/common-shell-tools.nix
+            ./nixos/common-desktop-applications.nix
+            ./nixos/desktops/gnome.nix
+
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useUserPackages = true;
@@ -39,7 +42,10 @@
 
           modules = [
             ./nixos/configuration.nix
-            ./desktops/hyprland.nix
+            ./nixos/common-shell-tools.nix
+            ./nixos/common-desktop-applications.nix
+            ./nixos/desktops/hyprland.nix
+
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useUserPackages = true;

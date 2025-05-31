@@ -5,12 +5,5 @@
 
   environment.systemPackages = with pkgs; [
     kitty # required for the default Hyprland config
-
-    gcc
-    git
-    pciutils
-    tree
-    unzip
-    zsh
   ] ;
 }
