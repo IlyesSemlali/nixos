@@ -17,6 +17,7 @@
           eza
           fzf
           jdk
+          just
           neovim
           nodejs
           pre-commit
