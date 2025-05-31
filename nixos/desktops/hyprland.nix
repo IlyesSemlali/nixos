@@ -1,9 +1,30 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
-  programs.hyprland.enable = true; # enable Hyprland
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kitty # required for the default Hyprland config
-  ] ;
+    brightnessctl
+    dunst
+    libnotify
+    pamixer
+  ];
+
+  systemd.user.services.dunst = {
+    enable = true;
+    description = "Dunst Notification Daemon";
+    documentation = ["man:dunst(1)"];
+    wantedBy = [ "default.target" ];
+
+    unitConfig = {
+      PartOf = "graphical-session.target";
+    };
+
+    serviceConfig = {
+      ExecStart = "${pkgs.dunst}/bin/dunst";
+      Type = "dbus";
+      BusName = "org.freedesktop.Notifications";
+      Slice = "session.slice";
+    };
+  };
 }
