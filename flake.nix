@@ -12,6 +12,7 @@
   outputs = { nixpkgs, home-manager,  ... }:
     let
       system = "x86_64-linux";
+      target = "xps13";
 
     in {
 
@@ -21,6 +22,7 @@
           inherit system;
 
           modules = [
+            (./nixos/. + "/targets/${target}.nix")
             ./nixos/configuration.nix
             ./nixos/common-shell-tools.nix
             ./nixos/common-desktop-applications.nix
@@ -40,6 +42,7 @@
           inherit system;
 
           modules = [
+            (./nixos/. + "/targets/${target}.nix")
             ./nixos/configuration.nix
             ./nixos/common-shell-tools.nix
             ./nixos/common-desktop-applications.nix
