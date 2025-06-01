@@ -17,14 +17,14 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  #Garbage colector
+  # Garbage colector
   nix.gc = {
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 7d";
   };
 
-  #Flakes
+  # Enable Flakes
   nix = {
     package = pkgs.nixVersions.stable;
     extraOptions = "experimental-features = nix-command flakes";
