@@ -13,6 +13,10 @@ in {
     homeDirectory = "/home/${username}";
   };
 
+  imports = [
+    ./common/tiling-window-manager.nix
+  ];
+
   # HyprLand Config
   wayland.windowManager.hyprland = {
 
