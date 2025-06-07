@@ -44,4 +44,15 @@
   programs = {
     zsh.enable = true;  # This is to load nix env in zshrc
   };
+
+  system = {
+    primaryUser = "ilyes";
+  };
+
+  system.defaults = {
+    dock.persistent-apps = [
+      {app = "/System/Applications/Launchpad.app/";}
+      {app = "${pkgs.alacritty}/Applications/Alacritty.app/";}
+    ];
+  };
 }
