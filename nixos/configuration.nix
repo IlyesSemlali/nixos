@@ -5,8 +5,7 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      /etc/nixos/hardware-configuration.nix
+    [
       ./locale.nix
       ./nixos.nix
       ./users.nix
