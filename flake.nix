@@ -72,7 +72,8 @@
           system = "aarch64-darwin";
           specialArgs = { inherit self; };
           modules = [
-            nix-darwin/configuration.nix
+            ./nix-darwin/configuration.nix
+            ./nix-darwin/common-shell-tools.nix
           ];
         };
 
