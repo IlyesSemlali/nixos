@@ -3,26 +3,52 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    darwin.url = "github:lnl7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager,  ... }:
+  outputs = { self, nixpkgs, flake-utils, home-manager, darwin, ... }:
     let
-      system = "x86_64-linux";
-      target = "xps13";
-
-    in {
+      nixos_target = "xps13";
+    in
+    {
+      packages = flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = import nixpkgs { inherit system; };
+        in {
+          default = pkgs.hello;
+        }
+      );
 
       nixosConfigurations = {
 
-        gnome = nixpkgs.lib.nixosSystem {
-          inherit system;
-
+        hyprland = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
           modules = [
-            (./nixos/. + "/targets/${target}.nix")
+            (./nixos/. + "/targets/${nixos_target}.nix")
+            ./nixos/configuration.nix
+            ./nixos/common-shell-tools.nix
+            ./nixos/common-desktop-applications.nix
+            ./nixos/desktops/hyprland.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useUserPackages = true;
+                useGlobalPkgs = true;
+                users.ilyes = ./home-manager/hyprland.nix;
+              };
+            }
+          ];
+        };
+
+        gnome = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (./nixos/. + "/targets/${nixos_target}.nix")
             ./nixos/configuration.nix
             ./nixos/common-shell-tools.nix
             ./nixos/common-desktop-applications.nix
@@ -38,23 +64,15 @@
           ];
         };
 
-        hyprland = nixpkgs.lib.nixosSystem {
-          inherit system;
+      };
 
+      darwinConfigurations = {
+
+        macos = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit self; };
           modules = [
-            (./nixos/. + "/targets/${target}.nix")
-            ./nixos/configuration.nix
-            ./nixos/common-shell-tools.nix
-            ./nixos/common-desktop-applications.nix
-            ./nixos/desktops/hyprland.nix
-
-            home-manager.nixosModules.home-manager {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                users.ilyes = ./home-manager/hyprland.nix;
-              };
-            }
+            nix-darwin/configuration.nix
           ];
         };
 
