@@ -74,6 +74,7 @@
           modules = [
             ./nix-darwin/configuration.nix
             ./nix-darwin/common-shell-tools.nix
+            ./nix-darwin/users.nix
           ];
         };
 
