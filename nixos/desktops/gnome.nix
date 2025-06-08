@@ -1,20 +1,23 @@
 { pkgs, ... }:
 
 {
-  services.xserver = {
-    enable = true;
-
-    displayManager.gdm = {
+  services = {
+    displayManager.sddm = {
       enable = true;
-      autoSuspend = false;
+      wayland.enable = true;
+      theme = "sugar-dark";
     };
 
-    desktopManager.gnome.enable = true;
+    xserver.desktopManager.gnome.enable = true;
   };
 
 
   environment.systemPackages = with pkgs; [
-    gnomeExtensions.appindicator # Gnome
+    gnomeExtensions.appindicator
+
+    # SDDM Requirements
+    libsForQt5.qt5.qtgraphicaleffects
+    sddm-sugar-dark
   ] ;
 
   environment.gnome.excludePackages = (with pkgs; [
