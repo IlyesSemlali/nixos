@@ -10,6 +10,8 @@
       ./locale.nix
       ./nixos.nix
       ./users.nix
+      ./desktops/gnome.nix
+      ./desktops/hyprland.nix
     ];
 
   boot = {

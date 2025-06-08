@@ -1,9 +1,9 @@
-switch desktop:
-  sudo nixos-rebuild switch --impure --flake '.#{{desktop}}'
+switch:
+  sudo nixos-rebuild switch --impure --flake '.#nixos'
 
-build desktop:
-  sudo nixos-rebuild build --impure --flake '.#{{desktop}}'
+build:
+  sudo nixos-rebuild build --impure --flake '.#nixos'
 
-boot desktop:
-  sudo nixos-rebuild boot --impure --flake '.#{{desktop}}'
+boot:
+  sudo nixos-rebuild boot --impure --flake '.#nixos'
   sudo reboot now

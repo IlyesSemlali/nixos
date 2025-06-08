@@ -12,5 +12,10 @@ in {
     inherit username;
     homeDirectory = "/home/${username}";
   };
-}
 
+  imports = [
+    ./common/tiling-window-manager.nix
+    ./window-managers/hyprland.nix
+  ];
+
+}

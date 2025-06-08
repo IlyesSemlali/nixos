@@ -26,39 +26,19 @@
 
       nixosConfigurations = {
 
-        hyprland = nixpkgs.lib.nixosSystem {
+        nixos = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             (./nixos/. + "/targets/${nixos_target}.nix")
             ./nixos/configuration.nix
             ./nixos/common-shell-tools.nix
             ./nixos/common-desktop-applications.nix
-            ./nixos/desktops/hyprland.nix
 
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useUserPackages = true;
                 useGlobalPkgs = true;
-                users.ilyes = ./home-manager/hyprland.nix;
-              };
-            }
-          ];
-        };
-
-        gnome = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            (./nixos/. + "/targets/${nixos_target}.nix")
-            ./nixos/configuration.nix
-            ./nixos/common-shell-tools.nix
-            ./nixos/common-desktop-applications.nix
-            ./nixos/desktops/gnome.nix
-
-            home-manager.nixosModules.home-manager {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                users.ilyes = ./home-manager/gnome.nix;
+                users.ilyes = ./home-manager/home.nix;
               };
             }
           ];
