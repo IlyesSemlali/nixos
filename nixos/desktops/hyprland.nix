@@ -1,6 +1,14 @@
 { pkgs, ... }:
 
 {
+  services = {
+    displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "sugar-dark";
+    };
+  };
+
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -8,6 +16,10 @@
     dunst
     libnotify
     pamixer
+
+    # SDDM Requirements
+    libsForQt5.qt5.qtgraphicaleffects
+    sddm-sugar-dark
   ];
 
   systemd.user.services.dunst = {
