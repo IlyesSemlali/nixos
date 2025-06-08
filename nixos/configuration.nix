@@ -6,20 +6,17 @@
 {
   imports =
     [
+      ./console.nix
       ./locale.nix
       ./nixos.nix
       ./users.nix
     ];
 
-  # Grub.
   boot = {
     loader.grub = {
       enable = true;
       useOSProber = true;
     };
-
-    consoleLogLevel = 0;
-    initrd.verbose = false;
   };
 
   networking = {
