@@ -1,7 +1,7 @@
 # Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports =
@@ -55,4 +55,10 @@
   };
 
   programs.zsh.enable = true;
+
+  # Used both in graphical env and KMSConsole
+  fonts.packages = with pkgs; [
+      nerd-fonts.sauce-code-pro
+  ];
+
 }

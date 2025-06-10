@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   boot = {
@@ -20,6 +20,14 @@
       "vga=current"
       "rd.udev.log_level=3"
     ];
+  };
+
+  services.kmscon = {
+    enable = true;
+    fonts = [ { name = "SauceCodePro Nerd Font Mono"; package = pkgs.nerd-fonts.sauce-code-pro; } ];
+    useXkbConfig = true;
+    extraOptions = "--term xterm-256color";
+    hwRender = true;
   };
 
   # Disable VT1
