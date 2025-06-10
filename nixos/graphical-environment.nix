@@ -17,6 +17,11 @@
       enable = true;
       wayland.enable = true;
       theme = "sugar-dark";
+      settings = {
+        Wayland = {
+          SessionDir = "/run/current-system/sw/share/wayland-sessions/,/etc/wayland-sessions/";
+        };
+      };
     };
   };
 }
