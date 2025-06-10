@@ -32,7 +32,7 @@
             (./nixos/. + "/targets/${nixos_target}.nix")
             ./nixos/configuration.nix
             ./nixos/common-shell-tools.nix
-            ./nixos/common-desktop-applications.nix
+            ./nixos/graphical-environment.nix
 
             home-manager.nixosModules.home-manager {
               home-manager = {
