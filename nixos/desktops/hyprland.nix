@@ -12,10 +12,7 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    brightnessctl
-    dunst
-    libnotify
-    pamixer
+    hyprlock
 
     # SDDM Requirements
     libsForQt5.qt5.qtgraphicaleffects

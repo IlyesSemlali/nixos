@@ -17,6 +17,7 @@
         [
           # Window Manager
           "SUPER_SHIFT, ESCAPE, exit"
+          "$mod, ESC, exec, loginctl lock-session"
 
           # Applications
           "$mod, RETURN, exec, $terminal"

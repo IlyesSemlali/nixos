@@ -6,6 +6,10 @@
     libsForQt5.qt5.qtgraphicaleffects
     sddm-sugar-dark
 
+    brightnessctl
+    dunst
+    libnotify
+    pamixer
     pavucontrol
     solaar
     vivaldi
