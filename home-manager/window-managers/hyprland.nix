@@ -15,6 +15,10 @@
       "$browser" = "vivaldi";
       bind =
         [
+          # Window Manager
+          "SUPER_SHIFT, ESCAPE, exit"
+
+          # Applications
           "$mod, RETURN, exec, $terminal"
           "$mod, SPACE, exec, $browser"
 
