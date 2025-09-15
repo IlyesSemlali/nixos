@@ -23,6 +23,7 @@
     tmux
     tree
     unzip
+    ventoy
     vim
     zoxide
     zsh
