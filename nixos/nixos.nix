@@ -9,10 +9,7 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
 
-  system.autoUpgrade = {
-   enable = true;
-   channel = "https://nixos.org/channels/nixos-24.05";
-  };
+  system.autoUpgrade.enable = false;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
