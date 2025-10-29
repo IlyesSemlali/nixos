@@ -12,8 +12,10 @@
     pamixer
     pavucontrol
     solaar
+    spotify
     vivaldi
     vlc
+
   ];
 
   services = {
