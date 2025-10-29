@@ -15,7 +15,7 @@
     neovim
     nodejs
     pre-commit
-    python3Full
+    python3
     ripgrep
     starship
     tmux

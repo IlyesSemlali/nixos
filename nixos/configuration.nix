@@ -10,6 +10,7 @@
       ./locale.nix
       ./nixos.nix
       ./users.nix
+      ./security.nix
       ./desktops/gnome.nix
       ./desktops/hyprland.nix
     ];
@@ -27,7 +28,6 @@
 
   hardware = {
     bluetooth = {
-      enable = true;
       powerOnBoot = true;
     };
   };

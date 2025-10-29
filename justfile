@@ -7,3 +7,7 @@ build:
 boot:
   sudo nixos-rebuild boot --impure --flake '.#nixos'
   sudo reboot now
+
+upgrade:
+  nix flake update
+  sudo nixos-rebuild switch --impure --flake '.#nixos' --upgrade

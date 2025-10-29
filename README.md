@@ -30,18 +30,17 @@ A "NixOS" flake, that will handle NixOS install and a HomeManager config.
 ## Rebuilding
 
 ```bash
-sudo nixos-rebuild switch --impure --flake '.#xps13' --upgrade
+sudo nixos-rebuild switch --impure --flake '.#nixos' --upgrade
 ```
 
 ## Upgrading
 
-1. Change the channel in nixos/configuration.nix
 1. Update the flake.lock
 1. Update the system
 
 ```bash
 nix flake update
-sudo nixos-rebuild switch --impure --flake '.#xps13' --upgrade
+sudo nixos-rebuild switch --impure --flake '.#nixos' --upgrade
 ```
 -->
 
