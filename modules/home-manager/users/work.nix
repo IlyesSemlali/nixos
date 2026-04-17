@@ -1,5 +1,10 @@
 { pkgs, inputs, ... }: {
-  imports = [ ./common/dot-files.nix ];
+
+  imports = [
+    ../features/graphical.nix
+    ../features/dot-files.nix
+    ../features/shell.nix
+  ];
 
   home.stateVersion = "25.11";
   programs.home-manager.enable = true;

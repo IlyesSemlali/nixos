@@ -1,32 +1,12 @@
-{ pkgs, lib, config, inputs, ... }:
-
-{
-  imports = [
-    ./common/dot-files.nix
-    ./common/shell-tools.nix
-  ];
-
-  home.stateVersion = "25.11";
-  home.username = "ilyes";
-
-  # OS Detection for paths
-  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/ilyes" else "/home/ilyes";
+{ pkgs, lib, config, ... }: {
 
   home.packages = with pkgs; [
-    spotify
-    whatsapp-for-mac
-    delta
-    htop
-    neovim
-    pre-commit
-    tmux
     dockutil
-    openssh
-    git
+    mos
+    whatsapp-for-mac
   ];
 
-  # Re-added the macOS-specific Dock and App link logic so you don't lose it!
-  home.activation = lib.optionalAttrs pkgs.stdenv.isDarwin {
+  home.activation = {
     linkApps = lib.hm.dag.entryAfter ["writeBoundary"] ''
       rm -rf "$HOME/Applications/Nix Apps"
       mkdir -p "$HOME/Applications/Nix Apps"

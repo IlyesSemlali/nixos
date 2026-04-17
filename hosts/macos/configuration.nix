@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   system.stateVersion = 5;
   system.primaryUser = "ilyes";
-  nix.enable = false; 
+  nix.enable = false;
 
   users.users.ilyes = {
     name = "ilyes";
@@ -15,7 +15,6 @@
 
   environment.systemPackages = [
     pkgs.spotify
-    pkgs.mos
   ];
 
   system.defaults = {
@@ -24,10 +23,10 @@
       tilesize = 48;
       largesize = 60;
       show-recents = true;
-      wvous-tl-corner = 1; 
-      wvous-tr-corner = 1; 
-      wvous-bl-corner = 1; 
-      wvous-br-corner = 1; 
+      wvous-tl-corner = 1;
+      wvous-tr-corner = 1;
+      wvous-bl-corner = 1;
+      wvous-br-corner = 1;
     };
 
     NSGlobalDomain = {
