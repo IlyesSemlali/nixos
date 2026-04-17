@@ -1,64 +1,51 @@
 {
-  description = "NixOS for laptops";
+  description = "NixOS/nix-darwin config";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    darwin.url = "github:lnl7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dotfiles = {
+      url = "git@github.com:IlyesSemlali/dotfiles.git";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, flake-utils, home-manager, darwin, ... }:
-    let
-      nixos_target = "xps13";
-    in
-    {
-      packages = flake-utils.lib.eachDefaultSystem (system:
-        let
-          pkgs = import nixpkgs { inherit system; };
-        in {
-          default = pkgs.hello;
+  outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs: {
+    darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin"; # Change to x86_64-darwin if using Intel Macs
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/macos/configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.ilyes = import ./modules/home-manager/personal.nix;
         }
-      );
-
-      nixosConfigurations = {
-
-        nixos = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            (./nixos/. + "/targets/${nixos_target}.nix")
-            ./nixos/configuration.nix
-            ./nixos/common-shell-tools.nix
-            ./nixos/graphical-environment.nix
-
-            home-manager.nixosModules.home-manager {
-              home-manager = {
-                useUserPackages = true;
-                useGlobalPkgs = true;
-                users.ilyes = ./home-manager/home.nix;
-              };
-            }
-          ];
-        };
-
-      };
-
-      darwinConfigurations = {
-
-        macos = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          specialArgs = { inherit self; };
-          modules = [
-            ./nix-darwin/configuration.nix
-            ./nix-darwin/common-shell-tools.nix
-            ./nix-darwin/users.nix
-          ];
-        };
-
-      };
+      ];
     };
-}
 
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/nixos/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.ilyes = import ./modules/home-manager/personal.nix;
+        }
+      ];
+    };
+  };
+}
