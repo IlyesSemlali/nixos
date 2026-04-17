@@ -18,8 +18,9 @@
   };
 
   outputs = { self, nixpkgs, nix-darwin, home-manager, ... }@inputs: {
+
     darwinConfigurations."macos" = nix-darwin.lib.darwinSystem {
-      system = "aarch64-darwin"; # Change to x86_64-darwin if using Intel Macs
+      system = "aarch64-darwin";
       specialArgs = { inherit inputs; };
       modules = [
         ./hosts/macos/configuration.nix
@@ -28,7 +29,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.ilyes = import ./modules/home-manager/personal.nix;
+          home-manager.users.ilyes = import ./modules/home-manager/profiles/mac-laptop.nix;
         }
       ];
     };
@@ -43,9 +44,25 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.ilyes = import ./modules/home-manager/personal.nix;
+          home-manager.users.ilyes = import ./modules/home-manager/profiles/linux-laptop.nix;
         }
       ];
     };
+
+    nixosConfigurations."nixos-server" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/nixos-server/configuration.nix
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit inputs; };
+          home-manager.users.ilyes = import ./modules/home-manager/profiles/server.nix;
+        }
+      ];
+    };
+
   };
 }

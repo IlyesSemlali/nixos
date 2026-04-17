@@ -3,7 +3,7 @@
 {
   imports = [
     ./common/dot-files.nix
-    ./common/shell-tools.nix
+    ./features/shell.nix
   ];
 
   home.stateVersion = "25.11";

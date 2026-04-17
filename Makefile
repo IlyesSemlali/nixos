@@ -6,9 +6,14 @@ else
 TARGET ?= nixos
 endif
 
-.PHONY: all apply update clean
+.PHONY: all setup apply update clean
 
 all: apply
+
+setup:
+	@if [ ! -d "/nix" ]; then \
+		curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --no-confirm; \
+	fi
 
 apply:
 ifeq ($(TARGET), macos)
@@ -27,3 +32,4 @@ update:
 
 clean:
 	nix-collect-garbage -d
+	sudo nix-collect-garbage -d
