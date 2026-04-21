@@ -17,6 +17,10 @@
     pkgs.spotify
   ];
 
+  fonts.packages = with pkgs; [
+      nerd-fonts.sauce-code-pro
+  ];
+
   system.defaults = {
     dock = {
       autohide = true;
