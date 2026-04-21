@@ -13,6 +13,8 @@
     home = "/Users/zenika";
   };
 
+  security.pam.services.sudo_local.touchIdAuth = true;
+
   environment.systemPackages = [
     pkgs.spotify
   ];
