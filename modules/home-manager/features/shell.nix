@@ -12,11 +12,13 @@
     htop
     jdk
     just
+    ncdu
     neovim
     nodejs
     pre-commit
     python3
     ripgrep
+    rsync
     starship
     tmux
     tree
