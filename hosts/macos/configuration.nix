@@ -29,6 +29,7 @@
       tilesize = 48;
       largesize = 60;
       show-recents = true;
+      mru-spaces = false;
       wvous-tl-corner = 1;
       wvous-tr-corner = 1;
       wvous-bl-corner = 1;
