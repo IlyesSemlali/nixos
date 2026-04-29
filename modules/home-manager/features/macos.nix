@@ -5,6 +5,9 @@
     mos
     reattach-to-user-namespace
     whatsapp-for-mac
+
+    # Required for build tools on macos
+    apple-sdk
   ];
 
   home.activation = {
