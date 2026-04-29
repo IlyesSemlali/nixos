@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     dockutil
     mos
+    reattach-to-user-namespace
     whatsapp-for-mac
   ];
 
